@@ -4,9 +4,10 @@ Angular — Local Development With Docker-Compose
 An example project with Angular, Nodejs Project
 -----------------------------------------------
 
-![](https://miro.medium.com/v2/resize:fit:700/0*_XmqOKIRJNsOy3EC)
+<p align="center">
+<img src="https://dragonprogrammer.com/wp-content/uploads/2018/12/angular_docker.png" width="400" height="150">
+</p>
 
-Photo by [Linh Nguyen](https://unsplash.com/@linhnguyen?utm_source=medium&utm_medium=referral) on [Unsplash](https://unsplash.com?utm_source=medium&utm_medium=referral)
 
 Docker Compose is really useful when we don’t have the development environment setup on our local machine to run all parts of the application to test or we want to run all parts of the application with one command. For example, if you want to run Angular and nodes express server on different ports and you need a single command to run you can accomplish that with Docker Compose.
 
