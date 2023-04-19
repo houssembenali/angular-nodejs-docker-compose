@@ -15,7 +15,7 @@ services:
       context: ./app-ui
       dockerfile: Dockerfile-dev
     ports:
-      - "4201:4201"
+      - "4200:4200"
     container_name: angular-ui
     volumes:
        - ./app-ui:/usr/src/app/app-ui
