@@ -1,15 +1,5 @@
 version: '3'
 services:
-  nodejs-server:
-    build:
-      context: ./api
-      dockerfile: Dockerfile-dev
-    ports:
-      - "3080:3080"
-    container_name: node-api
-    volumes:
-       - ./api:/usr/src/app/api
-       - /usr/src/app/api/node_modules
   angular-ui:
     build:
       context: ./app-ui
@@ -20,3 +10,39 @@ services:
     volumes:
        - ./app-ui:/usr/src/app/app-ui
        - /usr/src/app/app-ui/node_modules
+  api:
+    build:
+      context: ./back-end
+      dockerfile: local.Dockerfile
+    volumes:
+      - ./back-end:/app
+      - ./back-end/.m2:/root/.m2
+    working_dir: /app
+    command: sh run.sh
+    environment:
+      PG_HOST: db
+      PG_PASS: mydbpassword
+    ports:
+      - 8080:8080
+      - 35729:35729
+      - 5005:5005
+    depends_on:
+      - db
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: mydbpassword
+    volumes:
+      - ./.postgresql_data:/var/lib/postgresql/data
+
+#  nodejs-server:
+#    build:
+#      context: ./api
+#      dockerfile: Dockerfile-dev
+#    ports:
+#      - "3080:3080"
+#    container_name: node-api
+#    volumes:
+#       - ./api:/usr/src/app/api
+#       - /usr/src/app/api/node_modules
